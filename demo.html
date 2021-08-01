@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>smooth progress - by zimv</title>
+</head>
+<body>
+  <div class="title">普通版: 5s</div>
+  <div class="control">
+    <div>
+      <span class="progress general-5s"></span>
+    </div>
+  </div>
+
+  <div class="title smooth">顺滑版: 5s</div>
+  <div class="control">
+    <div>
+      <span class="progress smooth-5s smooth"></span>
+    </div>
+  </div>
+
+  <div class="title">普通版: 20s</div>
+  <div class="control">
+    <div>
+      <span class="progress general-20s"></span>
+    </div>
+  </div>
+
+  <div class="title smooth">顺滑版: 20s</div>
+  <div class="control">
+    <div>
+      <span class="progress smooth-20s smooth"></span>
+    </div>
+  </div>
+
+  <div class="title ">普通版: 60s</div>
+  <div class="control">
+    <div>
+      <span class="progress general-60s"></span>
+    </div>
+  </div>
+
+  <div class="title smooth">顺滑版: 60s</div>
+  <div class="control">
+    <div>
+      <span class="progress smooth-60s smooth"></span>
+    </div>
+  </div>
+
+  <a target="_blank" href="https://github.com/zimv" style="color: #fff;text-align: center;display: block;">by zimv</a>
+</body>
+<script src="./progress-normal.js"></script>
+<script src="./progress-smooth.js"></script>
+
+<script>
+
+  //小程序实际用例数据：[{"detail":{"currentTime":0.10509,"duration":30.883}},{"detail":{"currentTime":0.364527,"duration":30.883}},{"detail":{"currentTime":0.613648,"duration":30.883}},{"detail":{"currentTime":0.863122,"duration":30.883}},{"detail":{"currentTime":1.11112,"duration":30.883}},{"detail":{"currentTime":1.359882,"duration":30.883}},{"detail":{"currentTime":1.609576,"duration":30.883}},{"detail":{"currentTime":1.858753,"duration":30.883}},{"detail":{"currentTime":2.1066,"duration":30.883}},{"detail":{"currentTime":2.355862,"duration":30.883}},{"detail":{"currentTime":2.60544,"duration":30.883}},{"detail":{"currentTime":2.864463,"duration":30.883}},{"detail":{"currentTime":3.114059,"duration":30.883}},{"detail":{"currentTime":3.363492,"duration":30.883}},{"detail":{"currentTime":3.612981,"duration":30.883}},{"detail":{"currentTime":3.860494,"duration":30.883}},{"detail":{"currentTime":4.109981,"duration":30.883}},{"detail":{"currentTime":4.359256,"duration":30.883}},{"detail":{"currentTime":4.608809,"duration":30.883}},{"detail":{"currentTime":4.856019,"duration":30.883}},{"detail":{"currentTime":5.105759,"duration":30.883}},{"detail":{"currentTime":5.355106,"duration":30.883}},{"detail":{"currentTime":5.613962,"duration":30.883}},{"detail":{"currentTime":5.863637,"duration":30.883}},{"detail":{"currentTime":6.113171,"duration":30.883}},{"detail":{"currentTime":6.362563,"duration":30.883}},{"detail":{"currentTime":6.60967,"duration":30.883}},{"detail":{"currentTime":6.859417,"duration":30.883}},{"detail":{"currentTime":7.108796,"duration":30.883}},{"detail":{"currentTime":7.356121,"duration":30.883}},{"detail":{"currentTime":7.605906,"duration":30.883}},{"detail":{"currentTime":7.854989,"duration":30.883}},{"detail":{"currentTime":8.104602,"duration":30.883}},{"detail":{"currentTime":8.363772,"duration":30.883}},{"detail":{"currentTime":8.612801,"duration":30.883}},{"detail":{"currentTime":8.86264,"duration":30.883}},{"detail":{"currentTime":9.110199,"duration":30.883}},{"detail":{"currentTime":0.052518,"duration":30.883}}];
+
+  const playControl = {
+      percent: 0,
+      time: 0,
+      duration: 0,
+      first: true
+  }
+  window.progressSmooth(0, 5, document.querySelector('.smooth-5s'), JSON.parse(JSON.stringify(playControl)));
+  window.progressNormal(0, 5, document.querySelector('.general-5s'), JSON.parse(JSON.stringify(playControl)));
+  
+  window.progressSmooth(0, 20, document.querySelector('.smooth-20s'), JSON.parse(JSON.stringify(playControl)));
+  window.progressNormal(0, 20, document.querySelector('.general-20s'), JSON.parse(JSON.stringify(playControl)));
+
+  window.progressSmooth(0, 60, document.querySelector('.smooth-60s'), JSON.parse(JSON.stringify(playControl)));
+  window.progressNormal(0, 60, document.querySelector('.general-60s'), JSON.parse(JSON.stringify(playControl)));
+</script>
+<style>
+  body{
+    background: #000;
+  }
+  .title{
+    color: #fff;
+  }
+  .smooth{
+    color: aqua;
+  }
+  .control{
+    background: rgba(255,255,0,0.3);
+    width: 90%;
+    height: 3px;
+    border-radius: 5px;
+    margin: 10px auto;
+  }
+  .control .progress{
+    display: block;
+    width: 0%;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+  }
+  .smooth{
+    transition: 0.5s linear;
+  }
+  .control .timer{
+    font-size: 12px;
+  }
+</style>
+</html>
